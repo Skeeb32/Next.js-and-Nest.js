@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "dist",
+    "../../packages/contracts/dist"
+  ],
+  "ext": "js",
+  "delay": "500",
+  "exec": "node --env-file-if-exists=.env dist/main.js"
+}

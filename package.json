@@ -1,0 +1,24 @@
+{
+  "name": "nextjs-and-nestjs",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm run build -w @repo/contracts && concurrently -k -n contracts,api,web \"npm run dev -w @repo/contracts\" \"npm run dev -w @repo/api\" \"npm run dev -w @repo/web\"",
+    "build": "npm run build -w @repo/contracts && npm run build -w @repo/api && npm run build -w @repo/web",
+    "typecheck": "npm run build -w @repo/contracts && npm run typecheck --workspaces --if-present",
+    "test": "npm run build -w @repo/contracts && npm run build -w @repo/api && node --test tests/api.test.cjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14",
+    "typescript": "^5.9.3"
+  }
+}
